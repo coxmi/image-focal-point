@@ -6,7 +6,7 @@
 ### WordPress plugin to select a focal point for images in your media library
 
 <br>
-![Screenshot](./docs/screenshot.jpg "Screenshot")
+![Screenshot](/docs/screenshot.jpg?raw=true)
 <br>
 
 
