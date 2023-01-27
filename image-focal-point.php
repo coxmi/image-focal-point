@@ -61,8 +61,8 @@ add_filter('attachment_fields_to_save', function($post, $attachment) {
 
 
 add_action('admin_enqueue_scripts', function() {	
-	wp_enqueue_style('focalpoint-style', plugin_dir_url(__FILE__) . '/style.css?v=' . time());
-	wp_enqueue_script('focalpoint-script', plugin_dir_url(__FILE__) . '/script.js?v=' . time());
+	wp_enqueue_style('focalpoint-style', plugin_dir_url(__FILE__) . 'style.css');
+	wp_enqueue_script('focalpoint-script', plugin_dir_url(__FILE__) . 'script.js');
 });
 
 
