@@ -1,1 +1,0 @@
-zip -r pub/plugin.zip ./ -x ".*" "*.DS_Store" "pub.sh" "pub/*" "docs/*"
