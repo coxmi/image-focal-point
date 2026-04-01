@@ -1,12 +1,12 @@
 <?php
-/**
-* Plugin Name: Image Focal Point
-* Description: Set a focal point on images in the media library
-* Version: 1.0.0
-* Author: Michael Cox
-* License: MIT
-* License URI: https://mit-license.org/
-*/
+/*
+ * Plugin Name: Image Focal Point
+ * Description: Set a focal point on images in the media library
+ * Version: 1.0.0
+ * Author: Michael Cox
+ * License: MIT
+ * License URI: https://mit-license.org/
+ */
 
 namespace ifp;
 

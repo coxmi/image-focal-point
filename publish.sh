@@ -24,7 +24,8 @@ printf "\n$RESET"
 
 # create zip
 printf "• Creating zip file:\n\n"
+rm -rf dist
 mkdir -p dist
-zip -r dist/image-focal-point.zip ./image-focal-point -x ".*" "*.DS_Store"
+cd ./image-focal-point && zip -r ../dist/image-focal-point.zip ./* -x ".*" "*.DS_Store"
 
 

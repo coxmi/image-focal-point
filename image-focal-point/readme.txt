@@ -12,21 +12,40 @@ Select a focal point for images in your media library.
 
 == Description ==
 
-Image Focal Point
-
 WordPress plugin to select a focal point for images in your media library.
 
-In your theme, get the focal point position by calling `get_post_meta` with your attachment’s `$id`:
+Stores x and y position values (as percentages) on media attachments.
 
-<?php
-  $x = get_post_meta($attachmentId, "x", true);
-  $y = get_post_meta($attachmentId, "y", true);
-?>
+== Installation ==
 
-The values returned are percentages from the left and top edges of the image, so you can use them in `object-position` or `background-position`:
+1. Upload the plugin folder to the `/wp-content/plugins/image-focal-point` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
-<?php
-  $focalpoint = "${x}% ${y}%";
-?>
-<img style="object-position:<?php echo $focalpoint ?>">
+== Usage ==
 
+Get focal point values in your theme using `get_post_meta`:
+
+`$x = get_post_meta($attachmentId, "x", true);`
+`$y = get_post_meta($attachmentId, "y", true);`
+
+The values are percentages from the left and top edges of the image.
+
+Use them with CSS `object-position` or `background-position`:
+
+`$focalpoint = "$x% $y%";`
+
+Apply in markup:
+
+`<img style="object-position: <?php echo esc_attr($focalpoint); ?>">`
+
+
+== Frequently Asked Questions ==
+
+== Changelog ==
+Initial release
+
+== Upgrade Notice ==
+
+== Screenshots ==
+
+1. Focal point selection UI
