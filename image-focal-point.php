@@ -2,12 +2,16 @@
 /**
 * Plugin Name: Image Focal Point
 * Description: Set a focal point on images in the media library
-* Version: 1.0
+* Version: 1.0.0
 * Author: Michael Cox
 * License: MIT
 * License URI: https://mit-license.org/
 *
 */
+
+namespace ifp;
+
+if (!defined('ABSPATH')) exit;
 
 
 add_filter('attachment_fields_to_edit', function($fields, $post) {
@@ -53,6 +57,15 @@ add_filter('attachment_fields_to_edit', function($fields, $post) {
 }, 10, 2);
 
 
+function fileInfo($name) {
+	$uri = plugin_dir_url(__FILE__) . $name;
+	$file = plugin_dir_path(__FILE__) . $name;
+	return (object) [
+		'uri' => $uri, 'file' => $file, 'hash' => md5(filemtime($file))
+	];
+}
+
+
 add_filter('attachment_fields_to_save', function($post, $attachment) {
 	if (isset($attachment['x'])) update_post_meta($post['ID'], 'x', $attachment['x']);
 	if (isset($attachment['y'])) update_post_meta($post['ID'], 'y', $attachment['y']);
@@ -60,9 +73,13 @@ add_filter('attachment_fields_to_save', function($post, $attachment) {
 }, 10, 2);
 
 
-add_action('admin_enqueue_scripts', function() {	
-	wp_enqueue_style('focalpoint-style', plugin_dir_url(__FILE__) . 'style.css');
-	wp_enqueue_script('focalpoint-script', plugin_dir_url(__FILE__) . 'script.js');
+add_action('admin_enqueue_scripts', function() {
+	$style = fileInfo('style.css');
+	$script = fileInfo('script.js');
+	wp_enqueue_style('focalpoint-style', $style->uri, [], $style->hash);
+	wp_enqueue_script('focalpoint-script', $script->uri, [], $script->hash, [
+		'in_footer' => true
+	]);
 });
 
 
