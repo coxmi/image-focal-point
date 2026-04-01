@@ -6,7 +6,6 @@
 * Author: Michael Cox
 * License: MIT
 * License URI: https://mit-license.org/
-*
 */
 
 namespace ifp;
